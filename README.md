@@ -389,6 +389,15 @@ This project is licensed under the terms of the `MIT` license. See [LICENSE](htt
 }
 ```
 
-## Credits [![🚀 Your next Python package needs a bleeding-edge project structure.](https://img.shields.io/badge/python--package--template-%F0%9F%9A%80-brightgreen)](https://github.com/TezRomacH/python-package-template)
+## Credits 
+
+This project and its codes for autodiff implementation are inspired by the 
+following projects and 
+publications:
+- [autodidact](https://github.com/mattjj/autodidact)
+- [micrograd](https://github.com/karpathy/micrograd)
+- [Automatic differentiation in machine learning: a survey (Baydin et al., 
+2018)](https://arxiv.org/abs/1502.05767)
+- [A Simple Automatic Derivative Evaluation Program (Wengert, 1964)](https://dl.acm.org/doi/abs/10.1145/355586.364791)
 
 This project was generated with [`python-package-template`](https://github.com/TezRomacH/python-package-template)

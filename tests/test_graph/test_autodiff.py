@@ -21,3 +21,11 @@ def test_autodiff_reverse_mode_should_return_correct_gradients():
     assert np.isclose(x_2.gradients, 1.7163378145367738)
     assert np.isclose(x_1.gradients, 5.5)
     # print(v_4.gradients
+
+
+def test_sigmoid_should_return_correct_gradients():
+    x_1 = Node(2.5)
+    x_2 = ok.sigmoid(x_1)
+    x_2.backward()
+    assert np.isclose(x_2.gradients, (ok.sigmoid(x_1) * (1 - ok.sigmoid(
+        x_1))).ndarray)

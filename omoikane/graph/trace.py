@@ -80,6 +80,10 @@ class Node:
         onode = Node.__from_value(other)
         return Node(self.ndarray ** onode.ndarray, [self, onode], "pow")
 
+    def __rpow__(self, other):
+        onode = Node.__from_value(other)
+        return Node(onode.ndarray ** self.ndarray, [onode, self],"pow")
+
     def __neg__(self):
         return self * Node(-1)
 
@@ -92,8 +96,12 @@ class Node:
             p.__backward_recursive(self, self.parents, i)
 
     def __backward_recursive(self, child, parents, current_idx):
-        # print(self.ndarray, self.gradients, self.parents)
-        grad_func = reverse_mode_mapping[child.op_applied]
+        try:
+            # print(self.ndarray, self.gradients, self.parents)
+            grad_func = reverse_mode_mapping[child.op_applied]
+        except KeyError as e:
+            raise NotImplementedError(f"Op '{child.op_applied}' not "
+                                      f"implemented in backward mode.")
         if not self.gradients:
             self.gradients = grad_func(child, parents, current_idx)
         else:

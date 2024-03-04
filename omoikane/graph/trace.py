@@ -102,7 +102,7 @@ class Node:
         except KeyError as e:
             raise NotImplementedError(f"Op '{child.op_applied}' not "
                                       f"implemented in backward mode.")
-        if not self.gradients:
+        if type(self.gradients) == type(None):
             self.gradients = grad_func(child, parents, current_idx)
         else:
             self.gradients += grad_func(child, parents, current_idx)

@@ -1,6 +1,6 @@
 import numpy as np
 
-from omoikane.graph.trace import Node, trace
+from omoikane.graph.trace import Node
 
 
 def exp(x: Node):
